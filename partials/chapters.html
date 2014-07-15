@@ -1,0 +1,32 @@
+<div ng-controller="BookController" ng-show="current" class="chapters">
+    <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title">Chapters for <strong>{{current.title}}</strong>
+            <button class="btn btn-primary right" type="button" ng-click="addChapter()">Add chapter</button>
+          </h3>
+        </div>
+        <div class="panel-body">
+            <table>
+                <tr ng-repeat="chapter in chapters">
+                    <td>{{ $index + 1}}</td>
+                    <td>
+                        <div ng-controller="ChapterController">
+                            <div>
+                                <button class="btn btn-primary" ng-click="addPage(chapter)">Add page</button>
+                                <input type="number" ng-model="amount" placeholder="# pages to delete"/> {{amount}}
+                                <button class="btn btn-primary" ng-click="deletePages(chapter)" ng-disabled="badAmount()">Delete pages</button>
+                            </div>
+
+                            <span ng-repeat="page in chapter.pages">
+                                <img class="pageIcon" border="0" src="page.png" width="64" height="64" />
+                            </span>
+                        </div>
+
+                    </td>
+                    <td><button><a href="#" ng-click="deleteChapter($index)"> X </a></button></td>
+                </tr>
+            </table>
+            <div class="sad" ng-hide="chapters.length">(No chapters yet.)</div>
+        </div>
+    </div>
+</div>

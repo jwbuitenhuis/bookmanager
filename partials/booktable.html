@@ -1,0 +1,15 @@
+My books:
+<table class="booktable">
+    <tr ng-repeat="book in books" ng-class="{'active': book.active}">
+        <td><img src="book.ico" height="64"></td>
+        <td>{{ book.title }}</td>
+        <td>
+            <button class="btn btn-primary btn-block" type="button" ng-click="deleteBook($index)">X</button>
+        </td>
+        <td>
+            <button class="btn btn-primary btn-block" type="button" ng-click="loadBook(book)">Edit chapters &gt;&gt;</button>
+        </td>
+    </tr>
+</table>
+
+<div ng-show="!books.length" class="sad">(No books yet.)</div>

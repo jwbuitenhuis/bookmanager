@@ -1,72 +1,42 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Book Management Tool</title>
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css"/>
 </head>
 
 
 <body ng-app="app">
-    <div class="header">
-        <div class="title">My Books</div>
+    <header>
         <img src="citi-logo.png" class="logo"/>
-    </div>
-    <div class="content">
-<!--
-        <p>We need to create an online book management tool. There will be three artifacts for this tool.
-            <ol>
-                <li>Book</li>
-                <li>Chapter</li>
-                <li>Pages</li>
-             </ol>
-        </p>
-        <p>
-            Below is the detail user case
-         </p>
--->
+    </header>
+    <div class="container">
         <div ng-controller="LoginController">
-            <h1>{{ title }}</h1>
-            <div>Welcome, {{ myUser }}</div>
+            <h1 class="titleHeader">Book Management Tool</h1>
+            <div class="login" ng-show="myUser">You are logged in as: {{ myUser }} | <a href="#" ng-click="logout()">Sign out</a></div>
 
             <div ng-hide="myUser">
-                <div>
-                    <label for="username">Username:</label>
-                    <input id="username" type="text" name="username" ng-model="username" />
-                </div>
-                <div>
-                    <label for="password">Password:</label>
-                    <input id="password" type="password" name="password" ng-model="password" />
-                </div>
-                <div>
-                    <div ng-show="loginError" class="error">{{ loginError }}</div>
-                    <input type="submit" value="Login" ng-click="attemptLogin()" />
-                </div>
+                <form class="form-signin" role="form">
+                    <h2 class="form-signin-heading">Please sign in</h2>
+                    <input type="text" class="form-control" ng-model="username" placeholder="Username" required autofocus>
+                    <input type="password" class="form-control" ng-model="password" placeholder="Password" required>
+                    <br/>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="attemptLogin()">Sign in</button>
+                </form>
             </div>
 
             <div ng-if="myUser">
                 <ng-include src="'/partials/books.html'"></ng-include>
             </div>
         </div>
-
-        <hr/>
-        <p>
-            <ol style="font-size: 0.8em;">
-                <li>User will have to authenticate himself before he enters the application.</li>
-                <li>Once authentication is successful he will be diverted to landing page</li>
-                <li>Landing page should allow the user to create a new book</li>
-                <li>A book can have n number of chapters.</li>
-                <li>A chapter can have n number of pages.</li>
-                <li>UI should represent a proper hierarchy of book, chapter and pages</li>
-                <li>If book is deleted all of its chapters and pages should get deleted.</li>
-                <li>If chapter gets deleted, all of its pages should get deleted.</li>
-                <li>User should be able to choose number of pages to be deleted at a time.</li>
-            </ol>
-        </p>
-        <p>jwbuitenhuis@gmail.com, July 15th 2014</p>
-
     </div>
 
+    <footer>jwbuitenhuis@gmail.com, July 15th 2014</footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
 
     <script type="text/javascript" src="lib/angular.js"></script>
     <script src="src/app.js"></script>

@@ -11,13 +11,19 @@
         $scope.myUser = 'test';
 
         $scope.attemptLogin = function () {
-            if ($scope.username === $scope.password) {
+            if ($scope.username && $scope.username === $scope.password) {
+                $scope.password = '';
                 $scope.myUser = $scope.username;
                 $scope.loginError = '';
                 $scope.title = 'Books';
             } else {
                 $scope.loginError = 'Failed login, try citi/citi';
+                $scope.username = '';
             }
+        };
+
+        $scope.logout = function () {
+            $scope.myUser = '';
         };
 
     });
@@ -67,9 +73,14 @@
         };
 
         $scope.loadBook = function (book) {
+            var current = bookService.getCurrent();
+            if (current) {
+                current.active = false;
+            }
             bookService.setCurrent(book);
             $scope.current = book;
             $scope.$broadcast('bookLoaded');
+            book.active = true;
         };
     });
 
