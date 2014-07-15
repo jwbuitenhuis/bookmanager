@@ -1,0 +1,38 @@
+<div ng-controller="BooksController">
+
+    <input type="text" ng-model="newBookTitle" placeholder="Title of the new book" />
+    <input type="button" value="Add book" ng-disabled="badTitle()" ng-click="addBook()" />
+    <table border="1">
+        <tr ng-repeat="book in books">
+            <td>{{ book.title }}</td>
+            <td><button><a href="#" ng-click="loadBook(book)">Chapters</a></button></td>
+            <td><button><a href="#" ng-click="deleteBook($index)"> X </a></button></td>
+        </tr>
+    </table>
+
+    <div ng-controller="BookController" ng-show="current">
+        <input type="button" value="Add chapter" ng-click="addChapter()" />
+
+        <table border="1">
+            <tr ng-repeat="chapter in chapters">
+                <td>{{ $index + 1}}</td>
+                <td>
+                    <div ng-controller="ChapterController">
+                        <span ng-repeat="page in chapter.pages">
+                            <img class="pageIcon" border="0" src="page.png" width="64" height="64" />
+                        </span>
+                        <input type="button" value=" + " ng-click="addPage(chapter)" />
+                        <input type="number" ng-model="amount" /> {{amount}}
+                        <input type="button" ng-disabled="badAmount()" ng-value="'Delete pages'" ng-click="deletePages(chapter)" />
+                    </div>
+
+                </td>
+                <td><button><a href="#" ng-click="deleteChapter($index)"> X </a></button></td>
+            </tr>
+        </table>
+
+    </div>
+
+</div>
+
+

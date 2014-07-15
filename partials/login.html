@@ -1,0 +1,16 @@
+test login partial
+
+<div ng-controller="LoginController">
+    <div>
+        <label for="username">Username:</label>
+        <input id="username" type="text" name="username" ng-model="username" />
+    </div>
+    <div>
+        <label for="password">Password:</label>
+        <input id="password" type="password" name="password" ng-model="password" />
+    </div>
+    <div>
+        <div ng-show="loginError" class="error">{{ loginError }}</div>
+        <input type="submit" value="Login" ng-click="attemptLogin()" />
+    </div>
+</div>

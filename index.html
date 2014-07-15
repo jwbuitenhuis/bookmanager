@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Book Management Tool</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+
+
+<body ng-app="app">
+    <div class="header">
+        <div class="title">My Books</div>
+        <img src="citi-logo.png" class="logo"/>
+    </div>
+    <div class="content">
+<!--
+        <p>We need to create an online book management tool. There will be three artifacts for this tool.
+            <ol>
+                <li>Book</li>
+                <li>Chapter</li>
+                <li>Pages</li>
+             </ol>
+        </p>
+        <p>
+            Below is the detail user case
+         </p>
+-->
+        <div ng-controller="LoginController">
+            <h1>{{ title }}</h1>
+            <div>Welcome, {{ myUser }}</div>
+
+            <div ng-hide="myUser">
+                <div>
+                    <label for="username">Username:</label>
+                    <input id="username" type="text" name="username" ng-model="username" />
+                </div>
+                <div>
+                    <label for="password">Password:</label>
+                    <input id="password" type="password" name="password" ng-model="password" />
+                </div>
+                <div>
+                    <div ng-show="loginError" class="error">{{ loginError }}</div>
+                    <input type="submit" value="Login" ng-click="attemptLogin()" />
+                </div>
+            </div>
+
+            <div ng-if="myUser">
+                <ng-include src="'/partials/books.html'"></ng-include>
+            </div>
+        </div>
+
+        <hr/>
+        <p>
+            <ol style="font-size: 0.8em;">
+                <li>User will have to authenticate himself before he enters the application.</li>
+                <li>Once authentication is successful he will be diverted to landing page</li>
+                <li>Landing page should allow the user to create a new book</li>
+                <li>A book can have n number of chapters.</li>
+                <li>A chapter can have n number of pages.</li>
+                <li>UI should represent a proper hierarchy of book, chapter and pages</li>
+                <li>If book is deleted all of its chapters and pages should get deleted.</li>
+                <li>If chapter gets deleted, all of its pages should get deleted.</li>
+                <li>User should be able to choose number of pages to be deleted at a time.</li>
+            </ol>
+        </p>
+        <p>jwbuitenhuis@gmail.com, July 15th 2014</p>
+
+    </div>
+
+
+    <script type="text/javascript" src="lib/angular.js"></script>
+    <script src="src/app.js"></script>
+
+</body>
+</html>
