@@ -7,7 +7,6 @@
     var app = angular.module("app", []);
 
     app.controller("LoginController", function ($scope) {
-        $scope.title = 'Books';
         $scope.myUser = 'test';
 
         $scope.attemptLogin = function () {
@@ -28,6 +27,7 @@
 
     });
 
+    /* central repository for book data */
     app.service('bookService', function () {
         var current, books = [];
 
@@ -99,6 +99,8 @@
     });
 
     app.controller("ChapterController", function ($scope, bookService) {
+        $scope.amount = 1;
+
         $scope.badAmount = function () {
             return !$scope.amount || isNaN(parseInt($scope.amount, 10));
         };

@@ -1,0 +1,29 @@
+<div ng-controller="ChapterController">
+    <div class="pages-controls">
+        <form class="form-inline">
+            <div class="chapter-header">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <button class="btn btn-primary" ng-click="addPage(chapter)"><span class="glyphicon glyphicon-plus"></span>
+                            Add Page
+                        </button>
+                    </div>
+                    <div class="col-xs-6 text-right">
+                        <input class="input-small amount-input" type="number" ng-model="amount" placeholder="Amount" value="1" />
+                        <button class="btn btn-primary" ng-click="deletePages(chapter)" ng-disabled="badAmount()">
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pages-container">
+                <span ng-repeat="page in chapter.pages">
+                    <img class="pageIcon" border="0" src="page.png" width="64" height="64" />
+                </span>
+                <span ng-hide="chapter.pages.length" class="sad">(No pages yet.)</span>
+            </div>
+
+        </form>
+    </div>
+</div>

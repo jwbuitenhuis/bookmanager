@@ -1,13 +1,17 @@
-My books:
-<table class="booktable">
-    <tr ng-repeat="book in books" ng-class="{'active': book.active}">
-        <td><img src="book.ico" height="64"></td>
-        <td>{{ book.title }}</td>
-        <td>
-            <button class="btn btn-primary btn-block" type="button" ng-click="deleteBook($index)">X</button>
+<table class="booktable table">
+    <tr ng-repeat="book in books" ng-class="{'activeBook': book.active}">
+        <td class="span1 vert-align"><img src="book.ico" height="64"></td>
+        <td class="span2 vert-align"><strong>{{ book.title }}</strong></td>
+        <td class="span1">
+            <button class="btn btn-primary" type="button" ng-click="deleteBook($index)">
+                <span class="glyphicon glyphicon-remove"></span>
+            </button>
         </td>
-        <td>
-            <button class="btn btn-primary btn-block" type="button" ng-click="loadBook(book)">Edit chapters &gt;&gt;</button>
+        <td class="span2">
+            <button class="btn btn-primary" type="button" ng-click="loadBook(book)">
+                Chapters
+                <span class="glyphicon glyphicon-arrow-right"></span>
+            </button>
         </td>
     </tr>
 </table>

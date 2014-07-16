@@ -2,28 +2,23 @@
     <div class="panel panel-info">
         <div class="panel-heading">
           <h3 class="panel-title">Chapters for <strong>{{current.title}}</strong>
-            <button class="btn btn-primary right" type="button" ng-click="addChapter()">Add chapter</button>
+            <button class="btn btn-primary add-button" type="button" ng-click="addChapter()">
+                <span class="glyphicon glyphicon-plus"></span>
+                Add Chapter</button>
           </h3>
         </div>
         <div class="panel-body">
-            <table>
+            <table class="table">
                 <tr ng-repeat="chapter in chapters">
-                    <td>{{ $index + 1}}</td>
+                    <td><strong>Chapter {{ $index + 1}}</strong></td>
                     <td>
-                        <div ng-controller="ChapterController">
-                            <div>
-                                <button class="btn btn-primary" ng-click="addPage(chapter)">Add page</button>
-                                <input type="number" ng-model="amount" placeholder="# pages to delete"/> {{amount}}
-                                <button class="btn btn-primary" ng-click="deletePages(chapter)" ng-disabled="badAmount()">Delete pages</button>
-                            </div>
-
-                            <span ng-repeat="page in chapter.pages">
-                                <img class="pageIcon" border="0" src="page.png" width="64" height="64" />
-                            </span>
-                        </div>
-
+                        <button class="btn btn-primary" type="button" ng-click="deleteChapter($index)">
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </button>
                     </td>
-                    <td><button><a href="#" ng-click="deleteChapter($index)"> X </a></button></td>
+                    <td class="remove-padding">
+                        <ng-include src="'/partials/chapter.html'"></ng-include>
+                    </td>
                 </tr>
             </table>
             <div class="sad" ng-hide="chapters.length">(No chapters yet.)</div>
