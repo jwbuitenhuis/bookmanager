@@ -1,8 +1,8 @@
 <div ng-controller="BooksController">
     <div class="jumbotron">
         <form class="form-inline">
-            Add new book: <input type="text" class="form-control" ng-model="newBookTitle" placeholder="Title" />
-            <button class="btn btn-primary" ng-disabled="badTitle()" type="button" ng-click="addBook()">
+            Add new book: <input type="text" class="form-control input-large" ng-model="newBookTitle" placeholder="Title" />
+            <button class="btn btn-primary" ng-disabled="badTitle()" type="submit" ng-click="addBook()">
                 <span class="glyphicon glyphicon-plus"></span>
                 Add Book
             </button>

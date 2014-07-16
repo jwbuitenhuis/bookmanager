@@ -7,17 +7,15 @@
     var app = angular.module("app", []);
 
     app.controller("LoginController", function ($scope) {
-        $scope.myUser = 'test';
+        $scope.myUser = '';
 
         $scope.attemptLogin = function () {
             if ($scope.username && $scope.username === $scope.password) {
                 $scope.password = '';
                 $scope.myUser = $scope.username;
                 $scope.loginError = '';
-                $scope.title = 'Books';
             } else {
-                $scope.loginError = 'Failed login, try citi/citi';
-                $scope.username = '';
+                $scope.loginError = 'Login failed. Hint: Try citi/citi';
             }
         };
 

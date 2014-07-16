@@ -1,0 +1,19 @@
+<div ng-controller="LoginController">
+    <h1 class="titleHeader">Book Management Tool</h1>
+    <div class="login" ng-show="myUser">You are logged in as: {{ myUser }} | <a href="#" ng-click="logout()">Sign out</a></div>
+
+    <div ng-cloak ng-hide="myUser">
+        <form class="form-signin" role="form">
+            <h3 class="form-signin-heading">Please sign in</h3>
+            <input type="text" class="form-control" ng-model="username" placeholder="Username" required autofocus>
+            <input type="password" class="form-control" ng-model="password" placeholder="Password" required>
+            <div ng-show="loginError" class="error">{{ loginError }}</div>
+            <br/>
+            <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="attemptLogin()">Sign in</button>
+        </form>
+    </div>
+
+    <div ng-if="myUser">
+        <ng-include src="'/partials/books.html'"></ng-include>
+    </div>
+</div>
