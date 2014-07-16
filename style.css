@@ -54,7 +54,7 @@ table.table {
 }
 
 header {
-    background: #fff url(bg-marketing-banner.jpg);
+    background: #fff url(images/bg-marketing-banner.jpg);
     height: 86px;
     width: 100%;
     color: white;
@@ -127,4 +127,8 @@ body {
 .muted.credit {
     text-align: center;
     margin-top: 10px;
+}
+
+.chapter-delete {
+    margin-top: 5px;
 }

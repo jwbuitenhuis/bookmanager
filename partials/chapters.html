@@ -10,9 +10,8 @@
         <div class="panel-body">
             <table class="table">
                 <tr ng-repeat="chapter in chapters">
-                    <td><strong>Chapter {{ $index + 1}}</strong></td>
-                    <td>
-                        <button class="btn btn-primary" type="button" ng-click="deleteChapter($index)">
+                    <td><strong>Chapter {{ $index + 1}}</strong><br/>
+                        <button class="btn btn-primary chapter-delete" type="button" ng-click="deleteChapter($index)">
                             <span class="glyphicon glyphicon-remove"></span>
                         </button>
                     </td>

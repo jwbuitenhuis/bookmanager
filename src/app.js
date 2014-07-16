@@ -1,4 +1,4 @@
-/*global angular, console*/
+/*global $, angular, console*/
 
 (function () {
 
@@ -9,6 +9,8 @@
     app.controller("LoginController", function ($scope) {
         $scope.myUser = '';
 
+        // stub login: will accept credentials if they are the same
+        // e.g. citi/citi
         $scope.attemptLogin = function () {
             if ($scope.username && $scope.username === $scope.password) {
                 $scope.password = '';
@@ -21,11 +23,12 @@
 
         $scope.logout = function () {
             $scope.myUser = '';
+            $scope.username = '';
         };
 
     });
 
-    /* central repository for book data */
+    // central repository for book data, keep data in the closure
     app.service('bookService', function () {
         var current, books = [];
 
@@ -36,18 +39,19 @@
             removeAt: function (index) {
                 books.splice(index, 1);
             },
+            get: function () {
+                return books;
+            },
             setCurrent: function (book) {
                 current = book;
             },
             getCurrent: function () {
                 return current;
-            },
-            get: function () {
-                return books;
             }
         };
     });
 
+    // manage the list of books
     app.controller("BooksController", function ($scope, bookService) {
 
         $scope.books = bookService.get();
@@ -57,6 +61,7 @@
                 title: $scope.newBookTitle,
                 chapters: []
             });
+            $scope.newBookTitle = '';
         };
 
         $scope.deleteBook = function (index) {
@@ -70,6 +75,7 @@
             }).length > 0;
         };
 
+        // provide the chapter editor with the current book data
         $scope.loadBook = function (book) {
             var current = bookService.getCurrent();
             if (current) {
@@ -77,11 +83,14 @@
             }
             bookService.setCurrent(book);
             $scope.current = book;
+
+            // talk to BookController
             $scope.$broadcast('bookLoaded');
             book.active = true;
         };
     });
 
+    // add an delete chapters
     app.controller("BookController", function ($scope, bookService) {
         $scope.addChapter = function () {
             $scope.chapters.push({pages: []});
@@ -96,7 +105,8 @@
         });
     });
 
-    app.controller("ChapterController", function ($scope, bookService) {
+    // add and delete pages from a chapter
+    app.controller("ChapterController", function ($scope) {
         $scope.amount = 1;
 
         $scope.badAmount = function () {
@@ -107,6 +117,7 @@
             chapter.pages.push({});
         };
 
+        // delete <amount> pages
         $scope.deletePages = function (chapter) {
             var i;
 

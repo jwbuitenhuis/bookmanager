@@ -1,6 +1,6 @@
 <table class="booktable table">
     <tr ng-repeat="book in books" ng-class="{'activeBook': book.active}">
-        <td class="span1 vert-align"><img src="book.ico" height="64"></td>
+        <td class="span1 vert-align"><img src="images/book.ico" height="64"></td>
         <td class="span2 vert-align"><strong>{{ book.title }}</strong></td>
         <td class="span1">
             <button class="btn btn-primary" type="button" ng-click="deleteBook($index)">
@@ -15,5 +15,4 @@
         </td>
     </tr>
 </table>
-
 <div ng-show="!books.length" class="sad">(No books yet.)</div>
