@@ -10,14 +10,14 @@
         $scope.myUser = '';
 
         // stub login: will accept credentials if they are the same
-        // e.g. citi/citi
+        // e.g. test/test
         $scope.attemptLogin = function () {
             if ($scope.username && $scope.username === $scope.password) {
                 $scope.password = '';
                 $scope.myUser = $scope.username;
                 $scope.loginError = '';
             } else {
-                $scope.loginError = 'Login failed. Hint: Try citi/citi';
+                $scope.loginError = 'Login failed. Hint: Try test/test';
             }
         };
 
